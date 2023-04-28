@@ -108,7 +108,7 @@ const DoctorList = () => {
   return (
     <>
       <div
-        className="w-100"
+        className=" w-100"
         style={{
           backgroundColor: "#f1f5fc",
           padding: "15px",
@@ -218,7 +218,7 @@ const DoctorList = () => {
             </Col>
           ))}
         </div>
-        <div className="d-flex flex-lg-row flex-sm-column">
+        <div className="d-flex flex-lg-row flex-sm-column p-lg-0 pe-sm-3">
           {/* Doctors Requests Approve Or Not */}
           <Card
             className="col-lg-7  col-sm-12 p-3 mx-lg-3 mx-sm-2"
@@ -302,7 +302,7 @@ const DoctorList = () => {
           </Card>
           {/* isActive & isNotActive List */}
           <Card
-            className="col-lg-4 col-sm-12 p-3 mt-lg-0 mt-sm-3 mx-sm-2 "
+            className=" w-50 p-3 mt-lg-0 mt-sm-3 mx-sm-2 doc-card"
             style={{ backgroundColor: "#fff" }}
           >
             <h4
