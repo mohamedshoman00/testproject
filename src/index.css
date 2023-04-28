@@ -287,3 +287,9 @@
 .icons-style:hover {
   color: #2e2e2eee;
 }
+
+/* @media (max-width:991px) {
+  table {
+    padding: 10px !important;
+  }
+} */

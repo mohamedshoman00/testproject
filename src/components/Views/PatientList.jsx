@@ -114,7 +114,7 @@ const PatientList = () => {
           padding: "15px",
         }}
       >
-        <Card>
+        <Card style={{ overflowX: "auto" }}>
           <div
             className="d-flex align-items-center justify-content-between"
             style={{ borderBottom: "1px solid rgba(0, 0, 0, .1)" }}
@@ -124,7 +124,7 @@ const PatientList = () => {
               Add Patient
             </NavLink>
           </div>
-          <div className="px-5 py-3">
+          <div className="px-lg-3 px-sm-2 py-3">
             <Table
               className="table-padding"
               striped
@@ -142,23 +142,25 @@ const PatientList = () => {
               <tbody>
                 {Patients.map((e, i) => (
                   <tr className="light" key={i}>
-                    <td className="d-flex align-items-center">
-                      <img
-                        src={e.img}
-                        alt=""
-                        width="30px"
-                        height="30px"
-                        style={{ borderRadius: "50%", marginRight: "10px" }}
-                      />
-                      <p
-                        style={{
-                          fontWeight: "500",
-                          fontSize: "14px",
-                          margin: "0",
-                        }}
-                      >
-                        {e.name}
-                      </p>
+                    <td>
+                      <div className="d-flex align-items-center">
+                        <img
+                          src={e.img}
+                          alt=""
+                          width="30px"
+                          height="30px"
+                          style={{ borderRadius: "50%", marginRight: "10px" }}
+                        />
+                        <p
+                          style={{
+                            fontWeight: "500",
+                            fontSize: "14px",
+                            margin: "0",
+                          }}
+                        >
+                          {e.name}
+                        </p>
+                      </div>
                     </td>
                     <td style={{ fontSize: "14px" }}>{e.address}</td>
                     <td style={{ fontSize: "14px" }}>{e.disease}</td>
@@ -166,22 +168,26 @@ const PatientList = () => {
                     <td style={{ fontSize: "14px" }}>{e.phone}</td>
                     <td style={{ fontSize: "14px" }}>{e.email}</td>
                     <td>
-                      <FaPencilAlt
-                        style={{
-                          cursor: "pointer",
-                          fontSize: "20px",
-                          color: "#009efb",
-                          marginRight: "15px",
-                        }}
-                      />
-                      <FaRegTrashAlt
-                        style={{
-                          cursor: "pointer",
-                          fontSize: "20px",
-                          color: "#d9534f",
-                          marginRight: "15px",
-                        }}
-                      />
+                      <div className="d-flex">
+                        <FaPencilAlt
+                          className="me-lg-3 me-sm-2"
+                          style={{
+                            cursor: "pointer",
+                            fontSize: "20px",
+                            color: "#009efb",
+                            // marginRight: "15px",
+                          }}
+                        />
+                        <FaRegTrashAlt
+                          className="me-lg-3 me-sm-2"
+                          style={{
+                            cursor: "pointer",
+                            fontSize: "20px",
+                            color: "#d9534f",
+                            // marginRight: "15px",
+                          }}
+                        />
+                      </div>
                     </td>
                   </tr>
                 ))}

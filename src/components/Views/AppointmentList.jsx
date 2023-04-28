@@ -136,17 +136,19 @@ const AppointmentList = () => {
           padding: "15px",
         }}
       >
-        <Card>
+        <Card className="w-100" style={{ overflowX: "auto" }}>
           <div
             className="d-flex align-items-center justify-content-between"
-            style={{ borderBottom: "1px solid rgba(0, 0, 0, .1)" }}
+            style={{
+              borderBottom: "1px solid rgba(0, 0, 0, .1)",
+            }}
           >
             <h4 className="p-3">Appointment List</h4>
             <NavLink className="p-3" style={{ textDecoration: "none" }}>
               Add Appointment
             </NavLink>
           </div>
-          <div className="px-5 py-3">
+          <div className="px-lg-3 px-sm-2 py-3">
             <Table
               className="table-padding"
               striped
@@ -165,23 +167,25 @@ const AppointmentList = () => {
                 {Patients.map((e, i) => (
                   <tr className="light" key={i}>
                     <td style={{ fontSize: "14px" }}>{e.id}</td>
-                    <td className="d-flex align-items-center">
-                      <img
-                        src={e.img}
-                        alt=""
-                        width="25px"
-                        height="25px"
-                        style={{ borderRadius: "50%", marginRight: "10px" }}
-                      />
-                      <p
-                        style={{
-                          fontWeight: "500",
-                          fontSize: "14px",
-                          margin: "0",
-                        }}
-                      >
-                        {e.name}
-                      </p>
+                    <td className="">
+                      <div className="d-flex align-items-center">
+                        <img
+                          src={e.img}
+                          alt=""
+                          width="25px"
+                          height="25px"
+                          style={{ borderRadius: "50%", marginRight: "10px" }}
+                        />
+                        <p
+                          style={{
+                            fontWeight: "500",
+                            fontSize: "14px",
+                            margin: "0",
+                          }}
+                        >
+                          {e.name}
+                        </p>
+                      </div>
                     </td>
                     <td style={{ fontSize: "14px" }}>{e.age}</td>
                     <td style={{ fontSize: "14px" }}>{e.doctorName}</td>
@@ -190,22 +194,26 @@ const AppointmentList = () => {
                     <td style={{ fontSize: "14px" }}>{e.time}</td>
                     <td style={{ fontSize: "14px" }}>{e.disease}</td>
                     <td>
-                      <FaPencilAlt
-                        style={{
-                          cursor: "pointer",
-                          fontSize: "20px",
-                          color: "#009efb",
-                          marginRight: "15px",
-                        }}
-                      />
-                      <FaRegTrashAlt
-                        style={{
-                          cursor: "pointer",
-                          fontSize: "20px",
-                          color: "#d9534f",
-                          marginRight: "15px",
-                        }}
-                      />
+                      <div className="d-flex">
+                        <FaPencilAlt
+                          className="me-lg-3 me-sm-2"
+                          style={{
+                            cursor: "pointer",
+                            fontSize: "20px",
+                            color: "#009efb",
+                            // marginRight: "15px",
+                          }}
+                        />
+                        <FaRegTrashAlt
+                          className="me-lg-3 me-sm-2"
+                          style={{
+                            cursor: "pointer",
+                            fontSize: "20px",
+                            color: "#d9534f",
+                            // marginRight: "15px",
+                          }}
+                        />
+                      </div>
                     </td>
                   </tr>
                 ))}

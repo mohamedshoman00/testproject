@@ -117,7 +117,7 @@ const DoctorList = () => {
         {/* Doctors List */}
         <div className="w-100 d-flex flex-wrap">
           {doctors.map((e, i) => (
-            <Col lg={4} md={4} sm={6} className="px-3" key={i}>
+            <Col lg={4} md={4} sm={6} className="px-3 px-sm-2" key={i}>
               <Card style={{ marginBottom: "2rem" }}>
                 <div className="d-flex p-3" style={{ position: "relative" }}>
                   <div className="mb-3 w-100">
@@ -218,9 +218,12 @@ const DoctorList = () => {
             </Col>
           ))}
         </div>
-        <div className="d-flex">
+        <div className="d-flex flex-lg-row flex-sm-column">
           {/* Doctors Requests Approve Or Not */}
-          <Card className="col p-3 mx-3" style={{ backgroundColor: "#fff" }}>
+          <Card
+            className="col-lg-7  col-sm-12 p-3 mx-lg-3 mx-sm-2"
+            style={{ backgroundColor: "#fff" }}
+          >
             <h4>Doctors Requests</h4>
             <Table>
               <thead>
@@ -298,7 +301,10 @@ const DoctorList = () => {
             </Table>
           </Card>
           {/* isActive & isNotActive List */}
-          <Card className="col-5 p-3" style={{ backgroundColor: "#fff" }}>
+          <Card
+            className="col-lg-4 col-sm-12 p-3 mt-lg-0 mt-sm-3 mx-sm-2 "
+            style={{ backgroundColor: "#fff" }}
+          >
             <h4
               style={{
                 fontSize: "18px",

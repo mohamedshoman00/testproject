@@ -114,7 +114,7 @@ const DoctorSchedule = () => {
           padding: "15px",
         }}
       >
-        <Card>
+        <Card className="w-100" style={{ overflowX: "auto" }}>
           <div
             className="d-flex align-items-center justify-content-between"
             style={{ borderBottom: "1px solid rgba(0, 0, 0, .1)" }}
@@ -124,11 +124,11 @@ const DoctorSchedule = () => {
               Add Schedule
             </NavLink>
           </div>
-          <div className="px-5 py-3">
+          <div className="px-lg-3 px-sm-2 py-3">
             <Table
               className="table-padding"
               striped
-              style={{ borderRadius: "50px" }}
+              style={{ borderRadius: "50px", maxWidth: "100%" }}
             >
               <thead style={{ backgroundColor: "#009efb" }}>
                 <tr style={{ position: "relative" }}>
@@ -152,22 +152,26 @@ const DoctorSchedule = () => {
                     <td style={{ fontSize: "14px" }}>{e.endTime}</td>
                     <td style={{ fontSize: "14px" }}>{e.status}</td>
                     <td>
-                      <FaPencilAlt
-                        style={{
-                          cursor: "pointer",
-                          fontSize: "20px",
-                          color: "#009efb",
-                          marginRight: "15px",
-                        }}
-                      />
-                      <FaRegTrashAlt
-                        style={{
-                          cursor: "pointer",
-                          fontSize: "20px",
-                          color: "#d9534f",
-                          marginRight: "15px",
-                        }}
-                      />
+                      <div className="d-flex">
+                        <FaPencilAlt
+                          className="me-lg-3 me-sm-2"
+                          style={{
+                            cursor: "pointer",
+                            fontSize: "20px",
+                            color: "#009efb",
+                            // marginRight: "15px",
+                          }}
+                        />
+                        <FaRegTrashAlt
+                          className="me-lg-3 me-sm-2"
+                          style={{
+                            cursor: "pointer",
+                            fontSize: "20px",
+                            color: "#d9534f",
+                            // marginRight: "15px",
+                          }}
+                        />
+                      </div>
                     </td>
                   </tr>
                 ))}
