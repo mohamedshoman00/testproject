@@ -1,21 +1,11 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { Card, Table } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import doctorImg from "../../assets/images/doctor-3.jpg";
 import { FaPencilAlt, FaRegTrashAlt } from "react-icons/fa";
+import GlobalTable from "../Table/GlobalTable";
 const AppointmentList = () => {
-  const Categories = [
-    "ID",
-    "Patient Name",
-    "Age",
-    "Doctor Name",
-    "Department",
-    "Date",
-    "Time",
-    "Disease",
-    "Action",
-  ];
-  const Patients = [
+  const [patients, setPatients] = useState([
     {
       id: 1,
       name: "ahmed",
@@ -126,7 +116,91 @@ const AppointmentList = () => {
       disease: "cold",
       img: doctorImg,
     },
-  ];
+  ]);
+  const columns = useMemo(
+    () => [
+      {
+        Header: "ID",
+        accessor: "id",
+      },
+      {
+        Header: "Patient Name",
+        accessor: "name",
+        Cell: ({ row }) => (
+          <div className="d-flex align-items-center">
+            <img
+              src={row.original.img}
+              alt=""
+              width="30px"
+              height="30px"
+              style={{ borderRadius: "50%", marginRight: "10px" }}
+            />
+            <p
+              style={{
+                fontWeight: "500",
+                fontSize: "14px",
+                margin: "0",
+              }}
+            >
+              {row.original.name}
+            </p>
+          </div>
+        ),
+      },
+      {
+        Header: "Age",
+        accessor: "age",
+      },
+      {
+        Header: "Doctor Name",
+        accessor: "doctorName",
+      },
+      {
+        Header: "Department",
+        accessor: "department",
+      },
+      {
+        Header: "Date",
+        accessor: "date",
+      },
+      {
+        Header: "Time",
+        accessor: "time",
+      },
+      {
+        Header: "Disease",
+        accessor: "disease",
+      },
+      {
+        Header: "Action",
+        accessor: "action",
+        Cell: ({ row }) => (
+          <div className="d-flex">
+            <FaPencilAlt
+              className="me-lg-3 me-sm-2"
+              style={{
+                cursor: "pointer",
+                fontSize: "20px",
+                color: "#009efb",
+              }}
+              onClick={() => console.log(row.original.id)}
+            />
+            <FaRegTrashAlt
+              className="me-lg-3 me-sm-2"
+              style={{
+                cursor: "pointer",
+                fontSize: "20px",
+                color: "#d9534f",
+              }}
+              onClick={() => console.log(row.original.id)}
+            />
+          </div>
+        ),
+      },
+    ],
+    []
+  );
+  const data = useMemo(() => [...patients], [patients]);
   return (
     <>
       <div
@@ -148,7 +222,17 @@ const AppointmentList = () => {
               Add Appointment
             </NavLink>
           </div>
-          <div className="px-lg-3 px-sm-2 py-3">
+          <GlobalTable data={data} columns={columns} />
+        </Card>
+      </div>
+    </>
+  );
+};
+
+export default AppointmentList;
+
+{
+  /* <div className="px-lg-3 px-sm-2 py-3">
             <Table
               className="table-padding"
               striped
@@ -219,11 +303,5 @@ const AppointmentList = () => {
                 ))}
               </tbody>
             </Table>
-          </div>
-        </Card>
-      </div>
-    </>
-  );
-};
-
-export default AppointmentList;
+          </div> */
+}

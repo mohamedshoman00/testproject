@@ -10,6 +10,7 @@ import DoctorList from "./components/Views/DoctorList";
 import PatientList from "./components/Views/PatientList";
 import DoctorSchedule from "./components/Views/DoctorSchedule";
 import AppointmentList from "./components/Views/AppointmentList";
+import Patient from "./components/Views/Patient";
 
 function App() {
   return (

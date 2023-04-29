@@ -1,22 +1,13 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { Card, Table } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { FaPencilAlt, FaRegTrashAlt } from "react-icons/fa";
+import GlobalTable from "../Table/GlobalTable";
 const DoctorSchedule = () => {
-  const categories = [
-    "Serial No.",
-    "Doctor Name",
-    "Dep Name",
-    "Day",
-    "Start Time",
-    "End Time",
-    "Status",
-    "Action",
-  ];
-  const doctors = [
+  const [doctors, setDoctors] = useState([
     {
       id: 1,
-      name: "ahmed",
+      name: "Ahmed",
       department: "Dentist",
       day: "Sunday",
       startTime: "9:00",
@@ -25,8 +16,8 @@ const DoctorSchedule = () => {
     },
     {
       id: 2,
-      name: "ahmed",
-      department: "Dentist",
+      name: "mohamed",
+      department: "ss",
       day: "Sunday",
       startTime: "9:00",
       endTime: "11:00",
@@ -34,8 +25,8 @@ const DoctorSchedule = () => {
     },
     {
       id: 3,
-      name: "ahmed",
-      department: "Dentist",
+      name: "Memo",
+      department: "aa",
       day: "Sunday",
       startTime: "9:00",
       endTime: "11:00",
@@ -43,8 +34,8 @@ const DoctorSchedule = () => {
     },
     {
       id: 4,
-      name: "ahmed",
-      department: "Dentist",
+      name: "Zeko",
+      department: "ff",
       day: "Sunday",
       startTime: "9:00",
       endTime: "11:00",
@@ -52,8 +43,8 @@ const DoctorSchedule = () => {
     },
     {
       id: 5,
-      name: "ahmed",
-      department: "Dentist",
+      name: "Zeko",
+      department: "gg",
       day: "Sunday",
       startTime: "9:00",
       endTime: "11:00",
@@ -61,8 +52,8 @@ const DoctorSchedule = () => {
     },
     {
       id: 6,
-      name: "ahmed",
-      department: "Dentist",
+      name: "Zeko",
+      department: "hh",
       day: "Sunday",
       startTime: "9:00",
       endTime: "11:00",
@@ -70,8 +61,8 @@ const DoctorSchedule = () => {
     },
     {
       id: 7,
-      name: "ahmed",
-      department: "Dentist",
+      name: "Memo",
+      department: "xx",
       day: "Sunday",
       startTime: "9:00",
       endTime: "11:00",
@@ -79,7 +70,7 @@ const DoctorSchedule = () => {
     },
     {
       id: 8,
-      name: "ahmed",
+      name: "Memo",
       department: "Dentist",
       day: "Sunday",
       startTime: "9:00",
@@ -88,7 +79,7 @@ const DoctorSchedule = () => {
     },
     {
       id: 9,
-      name: "ahmed",
+      name: "Memo",
       department: "Dentist",
       day: "Sunday",
       startTime: "9:00",
@@ -104,7 +95,67 @@ const DoctorSchedule = () => {
       endTime: "11:00",
       status: "Active",
     },
-  ];
+  ]);
+  const columns = useMemo(
+    () => [
+      {
+        Header: "Serial No.",
+        accessor: "id",
+      },
+      {
+        Header: "Doctor Name",
+        accessor: "name",
+      },
+      {
+        Header: "Dep Name",
+        accessor: "department",
+      },
+      {
+        Header: "Day",
+        accessor: "day",
+      },
+      {
+        Header: "Start Time",
+        accessor: "startTime",
+      },
+      {
+        Header: "End Time",
+        accessor: "endTime",
+      },
+      {
+        Header: "Status",
+        accessor: "status",
+      },
+      {
+        Header: "Action",
+        accessor: "action",
+        Cell: ({ row }) => (
+          <div className="d-flex">
+            <FaPencilAlt
+              className="me-lg-3 me-sm-2"
+              style={{
+                cursor: "pointer",
+                fontSize: "20px",
+                color: "#009efb",
+              }}
+              onClick={() => console.log(row.original.id)}
+            />
+            <FaRegTrashAlt
+              className="me-lg-3 me-sm-2"
+              style={{
+                cursor: "pointer",
+                fontSize: "20px",
+                color: "#d9534f",
+              }}
+              onClick={() => console.log(row.original.id)}
+            />
+          </div>
+        ),
+      },
+    ],
+    []
+  );
+  const data = useMemo(() => [...doctors], [doctors]);
   return (
     <>
       <div
@@ -124,60 +175,7 @@ const DoctorSchedule = () => {
               Add Schedule
             </NavLink>
           </div>
-          <div className="px-lg-3 px-sm-2 py-3">
-            <Table
-              className="table-padding"
-              striped
-              style={{ borderRadius: "50px", maxWidth: "100%" }}
-            >
-              <thead style={{ backgroundColor: "#009efb" }}>
-                <tr style={{ position: "relative" }}>
-                  {categories.map((e, i) => (
-                    <th style={{ fontWeight: "500", color: "#fff" }} key={i}>
-                      {e}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {doctors.map((e, i) => (
-                  <tr className="light" key={i}>
-                    <td style={{ fontSize: "14px", paddingLeft: "35px" }}>
-                      {e.id}
-                    </td>
-                    <td style={{ fontSize: "14px" }}>{e.name}</td>
-                    <td style={{ fontSize: "14px" }}>{e.department}</td>
-                    <td style={{ fontSize: "14px" }}>{e.day}</td>
-                    <td style={{ fontSize: "14px" }}>{e.startTime}</td>
-                    <td style={{ fontSize: "14px" }}>{e.endTime}</td>
-                    <td style={{ fontSize: "14px" }}>{e.status}</td>
-                    <td>
-                      <div className="d-flex">
-                        <FaPencilAlt
-                          className="me-lg-3 me-sm-2"
-                          style={{
-                            cursor: "pointer",
-                            fontSize: "20px",
-                            color: "#009efb",
-                            // marginRight: "15px",
-                          }}
-                        />
-                        <FaRegTrashAlt
-                          className="me-lg-3 me-sm-2"
-                          style={{
-                            cursor: "pointer",
-                            fontSize: "20px",
-                            color: "#d9534f",
-                            // marginRight: "15px",
-                          }}
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-          </div>
+          <GlobalTable data={data} columns={columns} />
         </Card>
       </div>
     </>

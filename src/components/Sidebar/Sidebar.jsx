@@ -26,7 +26,6 @@ const Sidebar = (props) => {
             position: "absolute",
             backgroundImage: `url(${sidebar1})`,
             height: "100vh",
-            zindex: 1,
             top: 0,
             left: 0,
             backgroundSize: "cover",
