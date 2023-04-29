@@ -1,13 +1,19 @@
 import React, { useMemo, useState } from "react";
-import { Table } from "react-bootstrap";
+import { Button, Form, Table } from "react-bootstrap";
 import {
   FaArrowDown,
   FaArrowUp,
   FaPencilAlt,
   FaRegTrashAlt,
 } from "react-icons/fa";
-import { useGlobalFilter, useSortBy, useTable } from "react-table";
+import {
+  useGlobalFilter,
+  usePagination,
+  useSortBy,
+  useTable,
+} from "react-table";
 import GloblaFilter from "./GloblaFilter";
+import ReactPaginate from "react-paginate";
 const GlobalTable = ({ data, columns }) => {
   // // const columns =
   // const data = useMemo(() => [...doctors], [doctors]);
@@ -16,15 +22,52 @@ const GlobalTable = ({ data, columns }) => {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
+    // rows,
     prepareRow,
     preGlobalFilteredRows,
     setGlobalFilter,
     state,
-  } = useTable({ columns, data }, useGlobalFilter, useSortBy);
+    page,
+    nextPage,
+    previousPage,
+    canNextPage,
+    canPreviousPage,
+    pageOptions,
+    rows,
+    setPageSize,
+    gotoPage,
+    pageCount,
+  } = useTable({ columns, data }, useGlobalFilter, useSortBy, usePagination);
+  const { pageIndex, pageSize } = state;
+  console.log(page);
+  console.log(pageOptions);
+  const handlePageClick = (e) => {
+    gotoPage(e.selected);
+  };
   return (
     <>
-      <div className="d-flex justify-content-end align-items-center m-2 pt-2 pe-2">
+      <div className="d-flex justify-content-between align-items-center m-2 pt-2 pe-2">
+        <div
+          className="d-flex align-items-center ps-3"
+          style={{ fontSize: "16px" }}
+        >
+          Show
+          <Form.Select
+            style={{
+              marginLeft: "10px",
+              width: "70px",
+              borderRadius: "15px",
+            }}
+            value={pageSize}
+            onChange={(e) => setPageSize(Number(e.target.value))}
+          >
+            {[10, 25, 50, 100].map((pageSize) => (
+              <option key={pageSize} value={pageSize}>
+                {pageSize}
+              </option>
+            ))}
+          </Form.Select>
+        </div>
         <GloblaFilter
           preGlobalFilteredRows={preGlobalFilteredRows}
           setGlobalFilter={setGlobalFilter}
@@ -78,7 +121,7 @@ const GlobalTable = ({ data, columns }) => {
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
-            {rows.map((row) => {
+            {page.map((row) => {
               prepareRow(row);
               return (
                 <tr {...row.getRowProps()}>
@@ -102,6 +145,32 @@ const GlobalTable = ({ data, columns }) => {
             })}
           </tbody>
         </Table>
+        {pageCount > 1 && (
+          <div className="d-flex justify-content-between align items-center  px-4">
+            <span>
+              Page {pageIndex + 1} of {pageOptions.length}
+            </span>
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel="Next"
+              onPageChange={handlePageClick}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={2}
+              pageCount={pageCount}
+              previousLabel="Previous"
+              containerClassName="pagination"
+              pageClassName="page-item"
+              pageLinkClassName="page-link"
+              previousClassName="page-item"
+              previousLinkClassName="page-link"
+              nextClassName="page-item"
+              nextLinkClassName="page-link"
+              activeClassName="active"
+              breakClassName="page-item"
+              breakLinkClassName="page-link"
+            />
+          </div>
+        )}
       </div>
     </>
   );
