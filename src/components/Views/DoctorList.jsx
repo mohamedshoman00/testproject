@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Button,
   Card,
@@ -99,11 +99,72 @@ const DoctorList = () => {
       showDetails: false,
     },
   ]);
+  const divRef = useRef();
+  const menuRef = useRef();
+  const [een, seteen] = useState(false);
+  /* 
+   // useEffect(() => {
+  // let handler = (e) => {
+  // const ele = e.target.closest("div.details-div");
+  // if (!ele) {
+  //   const doctor = [...doctors];
+  //   const findele = doctor.filter((e, i) => e.showDetails === true);
+  //   if (findele.length !== 0) {
+  //     const i = doctor.findIndex((e) => e.id === findele[0].id);
+  //     console.log(findele);
+  //     console.log(i);
+  //     doctor[i] = { ...doctor[i], showDetails: !doctor[i].showDetails };
+  //     setDoctors(doctor);
+  //   }
+  // }
+  // console.log(e.target.closest("div.list-nav"));
+  // if (!divRef.current.contains(e.target)) {
+  // console.log(e.target);
+  // console.log(listRef.current);
+  // seteen(false);
+  // console.log("click outside div");
+  // const doctor = [...doctors];
+  // const ele = doctor.filter((e) => e.showDetails === true);
+  // console.log(ele);
+  // if (ele.length !== 0) {
+  //   console.log(ele[0].id);
+  //   const i = doctor.findIndex((e) => e.id === ele[0].id);
+  //   console.log(i);
+  //   doctor[i] = { ...doctor[i], showDetails: !doctor[i].showDetails };
+  //   setDoctors(doctor);
+  // };
+  // } else console.log("click inside Div");
+  //     console.log(divRef.current);
+  //     console.log(e.target.closest("div"));
+  //     console.log(
+  //       e.target.closest("div") === divRef.current.contains(e.target)
+  //     );
+  //   };
+  //   document.addEventListener("mousedown", handler);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handler);
+  //   };
+  // });
+
+  */
+
   const handleDetails = (ele) => {
     const doctor = [...doctors];
     const i = doctor.findIndex((e) => e.id === ele.id);
     doctor[i] = { ...doctor[i], showDetails: !doctor[i].showDetails };
     setDoctors(doctor);
+  };
+  const showDetailsHandler = (e) => {
+    const ele = e.target.closest("div.details-div");
+    if (!ele) {
+      const doctor = [...doctors];
+      const findele = doctor.filter((e, i) => e.showDetails === true);
+      if (findele.length !== 0) {
+        const i = doctor.findIndex((e) => e.id === findele[0].id);
+        doctor[i] = { ...doctor[i], showDetails: !doctor[i].showDetails };
+        setDoctors(doctor);
+      }
+    }
   };
   return (
     <>
@@ -113,13 +174,17 @@ const DoctorList = () => {
           backgroundColor: "#f1f5fc",
           padding: "15px",
         }}
+        onClick={showDetailsHandler}
       >
         {/* Doctors List */}
         <div className="w-100 d-flex flex-wrap">
           {doctors.map((e, i) => (
-            <Col lg={4} md={4} sm={6} className="px-3 px-sm-2" key={i}>
+            <Col lg={4} md={4} sm={6} className="px-3 px-sm-2 doc-card" key={i}>
               <Card style={{ marginBottom: "2rem" }}>
-                <div className="d-flex p-3" style={{ position: "relative" }}>
+                <div
+                  className="d-flex p-3 parent"
+                  style={{ position: "relative" }}
+                >
                   <div className="mb-3 w-100">
                     <div className="d-flex align-items-center">
                       <img
@@ -162,13 +227,15 @@ const DoctorList = () => {
                       </div>
                     </div>
                   </div>
-                  <div>
+                  <div className="details-div" list-id={i}>
                     <HiDotsVertical
                       style={{ cursor: "pointer" }}
                       onClick={() => handleDetails(e)}
                     />
-                    {e.showDetails ? (
+                    {e.showDetails && (
                       <motion.div
+                        className="details-div"
+                        list-id={i}
                         style={{
                           position: "absolute",
                           top: "40px",
@@ -180,7 +247,7 @@ const DoctorList = () => {
                         animate={{ right: "20px", opacity: 1 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <ListGroup>
+                        <ListGroup className="details-div" list-id={i}>
                           <ListGroupItem
                             className="list-nav"
                             style={{
@@ -211,7 +278,7 @@ const DoctorList = () => {
                           </ListGroupItem>
                         </ListGroup>
                       </motion.div>
-                    ) : null}
+                    )}
                   </div>
                 </div>
               </Card>

@@ -26,46 +26,60 @@ const UserProfile = () => {
               <h3 className="p-3">My Profile</h3>
             </div>
             <Form className="p-4 d-flex flex-wrap align-items-center justify-content-center gap-4">
-              <Form.Group className="col-lg-6">
+              <Form.Group className="col-lg-6" controlId="fname">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control type="text" placeholder="First name" />
               </Form.Group>
-              <Form.Group className="col-lg-5">
+              <Form.Group className="col-lg-5" controlId="lname">
                 <Form.Label>Last Name</Form.Label>
                 <Form.Control type="text" placeholder="Last name" />
               </Form.Group>
-              <Form.Group className="col-lg-6">
+              <Form.Group className="col-lg-6" controlId="email">
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control type="email" placeholder="Email Address" />
               </Form.Group>
-              <Form.Group className="col-lg-5">
+              <Form.Group className="col-lg-5" controlId="phone">
                 <Form.Label>Phone Number</Form.Label>
                 <Form.Control type="text" placeholder="Phone Number" />
               </Form.Group>
-              <Form.Group className="col-lg-6">
-                <Form.Label>Current Password</Form.Label>
-                <Form.Control type="Password" placeholder="Current Password" />
+              <Form.Group className="col-lg-6" controlId="nationalID">
+                <Form.Label>National ID</Form.Label>
+                <Form.Control type="text" placeholder="National ID" />
               </Form.Group>
-              <Form.Group className="col-lg-5">
-                <Form.Label>New Password</Form.Label>
-                <Form.Control type="Password" placeholder="New Password" />
-              </Form.Group>
-              <Form.Group className="col-lg-6">
+              <Form.Group className="col-lg-5" controlId="Address">
                 <Form.Label>Address</Form.Label>
                 <Form.Control type="text" placeholder="Address" />
               </Form.Group>
-              <Form.Group className="col-lg-5">
+              <Form.Group className="col-lg-6" controlId="currentPassword">
+                <Form.Label>Current Password</Form.Label>
+                <Form.Control type="Password" placeholder="Current Password" />
+              </Form.Group>
+              <Form.Group className="col-lg-5" controlId="password">
+                <Form.Label>New Password</Form.Label>
+                <Form.Control type="Password" placeholder="New Password" />
+              </Form.Group>
+              <Form.Group className="col-lg-6" controlId="dateOfBirth">
                 <Form.Label>Date of Birth</Form.Label>
                 <Form.Control type="date" placeholder="Date of Birth" />
               </Form.Group>
-              <div className="align-items-center col-lg-11 d-flex justify-content-end ms-4">
-                <Button
-                  variant="info"
-                  style={{ color: "#fff", width: "200px", height: "50px" }}
+              <Form.Group className="col-lg-5 text-end">
+                <div
+                  className="d-flex align-items-end justify-content-end"
+                  style={{ height: "70px" }}
                 >
-                  Update Profile
-                </Button>
-              </div>
+                  <Button
+                    variant="info"
+                    style={{
+                      color: "#fff",
+                      width: "250px",
+                      height: "55px",
+                      fontSize: "20px",
+                    }}
+                  >
+                    Update Profile
+                  </Button>
+                </div>
+              </Form.Group>
             </Form>
           </Card>
         </Col>

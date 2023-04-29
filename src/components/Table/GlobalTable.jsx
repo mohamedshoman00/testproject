@@ -28,10 +28,6 @@ const GlobalTable = ({ data, columns }) => {
     setGlobalFilter,
     state,
     page,
-    nextPage,
-    previousPage,
-    canNextPage,
-    canPreviousPage,
     pageOptions,
     rows,
     setPageSize,
@@ -39,8 +35,6 @@ const GlobalTable = ({ data, columns }) => {
     pageCount,
   } = useTable({ columns, data }, useGlobalFilter, useSortBy, usePagination);
   const { pageIndex, pageSize } = state;
-  console.log(page);
-  console.log(pageOptions);
   const handlePageClick = (e) => {
     gotoPage(e.selected);
   };
