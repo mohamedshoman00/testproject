@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import { useAsyncDebounce } from "react-table";
 
-const GloblaFilter = ({
+const GlobalFilter = ({
   preGlobalFilteredRows,
   globalFilter,
   setGlobalFilter,
@@ -17,7 +17,7 @@ const GloblaFilter = ({
       <div>
         <Form.Control
           className="ps-3"
-          style={{ width: "220px", borderRadius: "20px" }}
+          style={{ width: "250px", borderRadius: "10px" }}
           value={value || ""}
           onChange={(e) => {
             setValue(e.target.value);
@@ -30,4 +30,4 @@ const GloblaFilter = ({
   );
 };
 
-export default GloblaFilter;
+export default GlobalFilter;

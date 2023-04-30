@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import doctorImg from "../../assets/images/doctor-3.jpg";
 import { FaPencilAlt, FaRegTrashAlt } from "react-icons/fa";
 import GlobalTable from "../Table/GlobalTable";
+import ColumnFilter from "../Table/ColumnFilter";
 const AppointmentList = () => {
   const [patients, setPatients] = useState([
     {
@@ -154,6 +155,8 @@ const AppointmentList = () => {
       {
         Header: "Doctor Name",
         accessor: "doctorName",
+        Filter: ColumnFilter,
+        canFilterColumn: true,
       },
       {
         Header: "Department",

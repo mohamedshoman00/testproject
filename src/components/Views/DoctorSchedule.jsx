@@ -3,11 +3,12 @@ import { Card, Table } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { FaPencilAlt, FaRegTrashAlt } from "react-icons/fa";
 import GlobalTable from "../Table/GlobalTable";
+import ColumnFilter from "../Table/ColumnFilter";
 const DoctorSchedule = () => {
   const [doctors, setDoctors] = useState([
     {
       id: 1,
-      name: "Ahmed",
+      doctorName: "Ahmed",
       department: "Dentist",
       day: "Sunday",
       startTime: "9:00",
@@ -16,7 +17,7 @@ const DoctorSchedule = () => {
     },
     {
       id: 2,
-      name: "mohamed",
+      doctorName: "mohamed",
       department: "ss",
       day: "Sunday",
       startTime: "9:00",
@@ -25,7 +26,7 @@ const DoctorSchedule = () => {
     },
     {
       id: 3,
-      name: "Memo",
+      doctorName: "Memo",
       department: "aa",
       day: "Sunday",
       startTime: "9:00",
@@ -34,7 +35,7 @@ const DoctorSchedule = () => {
     },
     {
       id: 4,
-      name: "Zeko",
+      doctorName: "Zeko",
       department: "ff",
       day: "Sunday",
       startTime: "9:00",
@@ -43,7 +44,7 @@ const DoctorSchedule = () => {
     },
     {
       id: 5,
-      name: "Zeko",
+      doctorName: "Zeko",
       department: "gg",
       day: "Sunday",
       startTime: "9:00",
@@ -52,7 +53,7 @@ const DoctorSchedule = () => {
     },
     {
       id: 6,
-      name: "Zeko",
+      doctorName: "zeko",
       department: "hh",
       day: "Sunday",
       startTime: "9:00",
@@ -61,7 +62,7 @@ const DoctorSchedule = () => {
     },
     {
       id: 7,
-      name: "Memo",
+      doctorName: "Memo",
       department: "xx",
       day: "Sunday",
       startTime: "9:00",
@@ -70,7 +71,7 @@ const DoctorSchedule = () => {
     },
     {
       id: 8,
-      name: "Memo",
+      doctorName: "Memo",
       department: "Dentist",
       day: "Sunday",
       startTime: "9:00",
@@ -79,7 +80,7 @@ const DoctorSchedule = () => {
     },
     {
       id: 9,
-      name: "Memo",
+      doctorName: "memo",
       department: "Dentist",
       day: "Sunday",
       startTime: "9:00",
@@ -88,7 +89,7 @@ const DoctorSchedule = () => {
     },
     {
       id: 10,
-      name: "ahmed",
+      doctorName: "ahmed",
       department: "Dentist",
       day: "Sunday",
       startTime: "9:00",
@@ -97,7 +98,7 @@ const DoctorSchedule = () => {
     },
     {
       id: 11,
-      name: "ahmed",
+      doctorName: "ahmed",
       department: "Dentist",
       day: "Sunday",
       startTime: "9:00",
@@ -106,7 +107,7 @@ const DoctorSchedule = () => {
     },
     {
       id: 12,
-      name: "ahmed",
+      doctorName: "Ahmed",
       department: "Dentist",
       day: "Sunday",
       startTime: "9:00",
@@ -115,7 +116,7 @@ const DoctorSchedule = () => {
     },
     {
       id: 13,
-      name: "ahmed",
+      doctorName: "Ahmed",
       department: "Dentist",
       day: "Sunday",
       startTime: "9:00",
@@ -124,7 +125,7 @@ const DoctorSchedule = () => {
     },
     {
       id: 14,
-      name: "ahmed",
+      doctorName: "ahmed",
       department: "Dentist",
       day: "Sunday",
       startTime: "9:00",
@@ -133,7 +134,7 @@ const DoctorSchedule = () => {
     },
     {
       id: 15,
-      name: "ahmed",
+      doctorName: "ahmed",
       department: "Dentist",
       day: "Sunday",
       startTime: "9:00",
@@ -149,7 +150,9 @@ const DoctorSchedule = () => {
       },
       {
         Header: "Doctor Name",
-        accessor: "name",
+        accessor: "doctorName",
+        Filter: ColumnFilter,
+        canFilterColumn: true,
       },
       {
         Header: "Dep Name",

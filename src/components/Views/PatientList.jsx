@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import { type } from "@testing-library/user-event/dist/type";
 import GlobalTable from "../Table/GlobalTable";
+import ColumnFilter from "../Table/ColumnFilter";
 const PatientList = () => {
   const [patients, setPatients] = useState([
     {
@@ -20,6 +21,7 @@ const PatientList = () => {
       age: 15,
       phone: "01023770767",
       email: "Hamoda00@gmail.com",
+      doctorName: "Zeko",
     },
     {
       name: "m",
@@ -29,6 +31,7 @@ const PatientList = () => {
       age: 13,
       phone: "01023770767",
       email: "Hamoda00@gmail.com",
+      doctorName: "Zeko",
     },
     {
       name: "b",
@@ -38,6 +41,7 @@ const PatientList = () => {
       age: 12,
       phone: "01023770767",
       email: "Hamoda00@gmail.com",
+      doctorName: "Zeko",
     },
     {
       name: "c",
@@ -47,6 +51,7 @@ const PatientList = () => {
       age: 2,
       phone: "01023770767",
       email: "Hamoda00@gmail.com",
+      doctorName: "Zeko",
     },
     {
       name: "n",
@@ -56,6 +61,7 @@ const PatientList = () => {
       age: 80,
       phone: "01023770767",
       email: "Hamoda00@gmail.com",
+      doctorName: "Ahmed",
     },
     {
       name: "e",
@@ -65,6 +71,7 @@ const PatientList = () => {
       age: 90,
       phone: "01023770767",
       email: "Hamoda00@gmail.com",
+      doctorName: "Ahmed",
     },
     {
       name: "x",
@@ -74,6 +81,7 @@ const PatientList = () => {
       age: 100,
       phone: "01023770767",
       email: "Hamoda00@gmail.com",
+      doctorName: "Ahmed",
     },
     {
       name: "s",
@@ -83,6 +91,7 @@ const PatientList = () => {
       age: 200,
       phone: "01023770767",
       email: "Hamoda00@gmail.com",
+      doctorName: "Memo",
     },
     {
       name: "z",
@@ -92,6 +101,7 @@ const PatientList = () => {
       age: 1,
       phone: "01023770767",
       email: "Hamoda00@gmail.com",
+      doctorName: "Memo",
     },
     {
       name: "y",
@@ -101,6 +111,7 @@ const PatientList = () => {
       age: 22,
       phone: "01023770767",
       email: "Hamoda00@gmail.com",
+      doctorName: "Memo",
     },
   ]);
   const data = useMemo(() => [...patients], [patients]);
@@ -133,6 +144,12 @@ const PatientList = () => {
       {
         Header: "Address",
         accessor: "address",
+      },
+      {
+        Header: "Doctor Name",
+        accessor: "doctorName",
+        Filter: ColumnFilter,
+        canFilterColumn: true,
       },
       {
         Header: "Disease",
