@@ -18,7 +18,7 @@ const Pagination = ({ pageIndex, pageOptions, handlePageClick, pageCount }) => {
           previousLabel="Previous"
           containerClassName="pagination"
           pageClassName="page-item"
-          pageLinkClassName="page-link"
+          pageLinkClassName="page-link shadow-none"
           previousClassName="page-item"
           previousLinkClassName="page-link shadow-none"
           nextClassName="page-item"

@@ -3,8 +3,8 @@ import { Button, Card, Container, Form } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleLogin } from "../../redux/actions/appAction";
-import background1 from "../../assets/images/background1.jpg";
+import { toggleLogin } from "../../../redux/actions/appAction";
+import background1 from "../../../assets/images/background1.jpg";
 
 const ForgotPassword = () => {
   const islogin = useSelector((state) => state.loginOrRegister);
@@ -61,6 +61,7 @@ const ForgotPassword = () => {
                 type="submit"
                 variant="info"
                 className="col-2 mt-2 btn-style w-100 mb-4"
+                style={{ color: "#fff" }}
               >
                 Reset Password
               </Button>
@@ -70,7 +71,7 @@ const ForgotPassword = () => {
             Already have an account?
             <NavLink
               className="ms-1"
-              to="/"
+              to="/login"
               onClick={() => {
                 dispatch(toggleLogin());
               }}

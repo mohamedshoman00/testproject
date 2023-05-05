@@ -10,37 +10,43 @@ import {
   FaUserAlt,
   FaUserCircle,
 } from "react-icons/fa";
+import { BiNotepad } from "react-icons/bi";
 import { motion } from "framer-motion";
 
 const Admin = () => {
   const menu = [
     {
-      path: "/dashboard",
+      path: "/admin/dashboard",
       name: "dashboard",
       icon: <BsPieChart />,
     },
     {
-      path: "/user-profile",
+      path: "/admin/user-profile",
       name: "User profile",
       icon: <FaUserCircle />,
     },
     {
-      path: "/doctor",
+      path: "/admin/doctor",
       name: "Doctors List",
       icon: <FaStethoscope />,
     },
     {
-      path: "/patient",
+      path: "/admin/patient",
       name: "Patients List",
       icon: <FaUserAlt />,
     },
     {
-      path: "/doctor-schedule",
+      path: "/admin/doctor-schedule",
       name: "Doctors Schedule",
       icon: <FaListAlt />,
     },
     {
-      path: "/appointment-list",
+      path: "/admin/doctor-time-table",
+      name: "Doctor TimeTable",
+      icon: <BiNotepad />,
+    },
+    {
+      path: "/admin/appointment-list",
       name: "Appointment List",
       icon: <FaCheckSquare />,
     },

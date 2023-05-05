@@ -3,7 +3,7 @@ import { Button, Card, Container, Form, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleLogin } from "../../redux/actions/appAction";
+import { toggleLogin } from "../../../redux/actions/appAction";
 const Login = () => {
   const dispatch = useDispatch();
   const islogin = useSelector((state) => state.loginOrRegister);
@@ -12,10 +12,7 @@ const Login = () => {
       <motion.div className={`col-lg-6 col-md-12 col-sm-12 `}>
         <Container
           className="d-flex align-items-center justify-content-center h-100"
-          style={
-            {
-            }
-          }
+          style={{}}
         >
           <motion.div
             initial={{ left: islogin ? "-50%" : "", opacity: 0 }}

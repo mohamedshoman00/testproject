@@ -3,7 +3,7 @@ import { Col, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { FaBars, FaListAlt, FaUserCircle } from "react-icons/fa";
 import { BsPieChart } from "react-icons/bs";
-import sidebar1 from "../../assets/images/sidebar-3.jpg";
+import sidebar1 from "../../assets/images/sidebar.jpeg";
 import logo from "../../assets/images/logo.png";
 import { motion } from "framer-motion";
 const Sidebar = (props) => {
@@ -29,7 +29,7 @@ const Sidebar = (props) => {
             top: 0,
             left: 0,
             backgroundSize: "cover",
-            backgroundPosition: "50%",
+            backgroundPosition: "38%",
           }}
         >
           <div
@@ -42,7 +42,7 @@ const Sidebar = (props) => {
             }}
           >
             <NavLink
-              to="/dashboard"
+              to="/admin/dashboard"
               className={`d-flex align-items-center w-100`}
               style={{
                 color: "#fff",

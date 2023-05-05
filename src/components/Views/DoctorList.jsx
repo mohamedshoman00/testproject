@@ -15,6 +15,7 @@ import { IoPersonAddSharp } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
 import { hover } from "@testing-library/user-event/dist/hover";
 import { motion } from "framer-motion";
+import { FaUserAlt } from "react-icons/fa";
 const DoctorList = () => {
   const [doctors, setDoctors] = useState([
     {
@@ -150,15 +151,21 @@ const DoctorList = () => {
 
   const handleDetails = (ele) => {
     const doctor = [...doctors];
-    const i = doctor.findIndex((e) => e.id === ele.id);
-    doctor[i] = { ...doctor[i], showDetails: !doctor[i].showDetails };
-    setDoctors(doctor);
+    const newDocs = doctor.map((e) => {
+      return { ...e, showDetails: false };
+    });
+    const i = newDocs.findIndex((e) => e.id === ele.id);
+    newDocs[i] = {
+      ...newDocs[i],
+      showDetails: !newDocs[i].showDetails,
+    };
+    setDoctors(newDocs);
   };
   const showDetailsHandler = (e) => {
     const ele = e.target.closest("div.details-div");
     if (!ele) {
       const doctor = [...doctors];
-      const findele = doctor.filter((e, i) => e.showDetails === true);
+      const findele = doctor.filter((e) => e.showDetails === true);
       if (findele.length !== 0) {
         const i = doctor.findIndex((e) => e.id === findele[0].id);
         doctor[i] = { ...doctor[i], showDetails: !doctor[i].showDetails };
@@ -166,6 +173,7 @@ const DoctorList = () => {
       }
     }
   };
+
   return (
     <>
       <div
@@ -299,7 +307,7 @@ const DoctorList = () => {
                     className="col-8"
                     style={{
                       fontWeight: "500",
-                      fontSize: "18px",
+                      fontSize: "20px",
                     }}
                   >
                     Doctor
@@ -307,7 +315,7 @@ const DoctorList = () => {
                   <th
                     style={{
                       fontWeight: "500",
-                      fontSize: "16px",
+                      fontSize: "18px",
                       textAlign: "center",
                     }}
                   >
@@ -352,13 +360,22 @@ const DoctorList = () => {
                     <td className="text-center">
                       <Button
                         className="btn-isActive"
-                        style={{
-                          marginRight: "15px",
-                        }}
+                        style={{ opacity: "0.95" }}
                       >
                         <HiCheck style={{ fontSize: "18px" }} />
                       </Button>
-                      <Button variant="danger">
+                      <Button
+                        variant="primary"
+                        style={{ opacity: "0.8", margin: "0 15px" }}
+                      >
+                        <FaUserAlt
+                          style={{
+                            fontSize: "18px",
+                          }}
+                        />
+                      </Button>
+
+                      <Button variant="danger" style={{ opacity: "0.95" }}>
                         <AiOutlineClose style={{ fontSize: "18px" }} />
                       </Button>
                     </td>
@@ -423,6 +440,7 @@ const DoctorList = () => {
                       className={
                         e.isActive ? "btn-isActive" : "btn-isNotActive"
                       }
+                      style={{ opacity: e.isActive ? "0.95" : "1" }}
                     >
                       {e.isActive ? (
                         <HiCheck style={{ fontSize: "20px" }} />

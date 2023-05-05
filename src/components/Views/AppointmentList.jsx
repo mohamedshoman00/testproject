@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { Card, Table } from "react-bootstrap";
+import { Button, Card, Form, Table } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import doctorImg from "../../assets/images/doctor-3.jpg";
 import { FaPencilAlt, FaRegTrashAlt } from "react-icons/fa";
@@ -178,7 +178,7 @@ const AppointmentList = () => {
         Header: "Action",
         accessor: "action",
         Cell: ({ row }) => (
-          <div className="d-flex">
+          <div className="d-flex hidden-print">
             <FaPencilAlt
               className="me-lg-3 me-sm-2"
               style={{
@@ -221,6 +221,14 @@ const AppointmentList = () => {
             }}
           >
             <h4 className="p-3">Appointment List</h4>
+            {/* <Form className="d-flex">
+              <Form.Control
+                className="me-2"
+                type="date"
+                style={{ width: "200px" }}
+              />
+              <Button variant="secondary">Get</Button>
+            </Form> */}
             <NavLink className="p-3" style={{ textDecoration: "none" }}>
               Add Appointment
             </NavLink>

@@ -14,10 +14,10 @@ const GlobalFilter = ({
   }, 300);
   return (
     <>
-      <div>
+      <div className="w-25">
         <Form.Control
           className="ps-3"
-          style={{ width: "250px", borderRadius: "10px" }}
+          style={{ borderRadius: "10px" }}
           value={value || ""}
           onChange={(e) => {
             setValue(e.target.value);

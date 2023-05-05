@@ -1,9 +1,12 @@
 import React from "react";
 import { Col, Container } from "react-bootstrap";
-import SignUp from "../components/Login/SignUp";
+import SignUp from "../components/Login/oldLogin/SignUp";
 import Panel from "../components/Login/Panel";
 import background1 from "../assets/images/background1.jpg";
-import Login from "../components/Login/Login";
+// import Login from "../components/Login/oldLogin/Login";
+import SignUp2 from "../components/Login/SignUp2";
+import Login1 from "../components/Login/Login1";
+import MultiSignUp from "../components/Login/MultiSignUp";
 const FormLogin = () => {
   return (
     <>
@@ -22,8 +25,9 @@ const FormLogin = () => {
         <Col className={`col-lg-6 small-hidden`}>
           <Panel />
         </Col>
-        <Login />
-        <SignUp />
+        <Login1 />
+        {/* <SignUp2 /> */}
+        <MultiSignUp />
       </Container>
     </>
   );

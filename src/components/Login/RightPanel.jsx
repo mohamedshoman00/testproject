@@ -47,7 +47,8 @@ const RightPanel = () => {
           className="col-2 mt-2 btn-style"
           style={{
             color: "white",
-            border: "2px solid #fff",
+            border: "1px solid #fff",
+            // borderRadius: "48px",
           }}
           onClick={() => {
             dispatch(toggleLogin());

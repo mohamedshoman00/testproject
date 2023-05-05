@@ -19,6 +19,7 @@ const ColumnFilter = ({ column, data }) => {
           top: "86px",
           left: "140px",
         }}
+        className="hidden-print"
         // onClick={() => {
         //   console.log(rows.map((e) => e.original.doctorName));
         //   const res = [...new Set(rows.map((e) => e.original.doctorName))];

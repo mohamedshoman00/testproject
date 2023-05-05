@@ -44,9 +44,6 @@ const GlobalTable = ({ data, columns }) => {
   // const { filterValue, setFilter } = columns[2];
   // console.log(filterValue);
   // console.log(setFilter);
-  const handleDoctorFilter = useAsyncDebounce((value) => {
-    setGlobalFilter(value || undefined);
-  }, 300);
 
   const tablePDF = useRef();
   const generatePDF = useReactToPrint({
@@ -120,7 +117,7 @@ const GlobalTable = ({ data, columns }) => {
           globalFilter={state.globalFilter}
         />
         {/*     <Button onClick={generatePDF}> Print</Button> */}
-        {/* <Button onClick={generatePDF}> Print</Button> */}
+        <Button onClick={generatePDF}>Print</Button>
       </div>
 
       {/* Table Content */}
@@ -147,6 +144,7 @@ const GlobalTable = ({ data, columns }) => {
                       padding: "12px 16px",
                       cursor: "pointer",
                     }}
+                    className={column.Header === "Action" ? `hidden-print` : ``}
                   >
                     {column.render("Header")}
                     {!column.canFilterColumn && column.isSorted ? (
@@ -190,7 +188,7 @@ const GlobalTable = ({ data, columns }) => {
                   {row.cells.map((cell, i) => {
                     return (
                       <td
-                        className={i === 0 ? "ps-4" : " "}
+                        className={`${i === 0 ? `ps-4` : ``}`}
                         {...cell.getCellProps()}
                         style={{
                           padding: "15px",

@@ -171,7 +171,7 @@ const PatientList = () => {
         Header: "Action",
         accessor: "action",
         Cell: ({ row }) => (
-          <div className="d-flex">
+          <div className="d-flex hidden-print">
             <FaPencilAlt
               className="me-lg-3 me-sm-2"
               style={{

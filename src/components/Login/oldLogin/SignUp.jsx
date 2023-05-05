@@ -3,28 +3,20 @@ import { Button, Card, Container, Form, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleLogin } from "../../redux/actions/appAction";
+import { toggleLogin } from "../../../redux/actions/appAction";
 const SignUp = () => {
   const dispatch = useDispatch();
   const islogin = useSelector((state) => state.loginOrRegister);
   return (
     <>
       <Col className={`col-lg-6 col-md-12 col-sm-12`}>
-        <Container
-          className="d-flex align-items-center justify-content-center h-100"
-          style={
-            {
-              // backgroundColor: "#fff",
-            }
-          }
-        >
+        <Container className="d-flex align-items-center justify-content-center h-100">
           <motion.div
             initial={{ left: islogin ? "0%" : "100%", opacity: 0 }}
             animate={{
               left: islogin ? "100%" : "0%",
               opacity: islogin ? "0" : "1",
             }}
-            // exit={{ left: 0, opacity: 0 }}
             transition={{ duration: 1.2, delay: 1 }}
             className="d-flex justify-content-center align-items-center login-small-window"
             style={{
@@ -33,13 +25,7 @@ const SignUp = () => {
               zIndex: "1",
             }}
           >
-            <Card
-              className="form-card"
-              // style={{
-              //   borderRadius: "25px",
-              //   boxShadow: "rgba(0, 0, 0, 0.75) 0px 0px 25px 1px",
-              // }}
-            >
+            <Card className="form-card">
               <Form
                 className="d-flex flex-wrap justify-content-between text-center p-3 gap-2"
                 style={{ width: "370px" }}
@@ -117,7 +103,6 @@ const SignUp = () => {
                 className="ms-1"
                 onClick={(e) => {
                   e.preventDefault();
-                  // props.setIsLogin(!props.islogin);
                   dispatch(toggleLogin());
                 }}
               >
